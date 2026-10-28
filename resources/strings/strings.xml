@@ -1,0 +1,16 @@
+<strings>
+    <string id="AppName" scope="glance">Countup</string>
+
+    <string id="NoEvents" scope="glance">No events</string>
+    <string id="PressStart">Press START</string>
+    <string id="ToAddOne">to add one</string>
+
+    <string id="AddEvent">Add event</string>
+    <string id="Edit">Edit</string>
+    <string id="Delete">Delete</string>
+    <string id="ShowInGlance">Show in glance</string>
+    <string id="InGlanceNow">Shown now</string>
+    <string id="Name">Name</string>
+    <string id="Date">Date</string>
+    <string id="DeletePrompt">Delete</string>
+</strings>

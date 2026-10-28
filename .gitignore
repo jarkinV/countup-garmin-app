@@ -1,0 +1,6 @@
+bin/
+developer_key
+developer_key.pem
+.idea/
+*.iml
+.claude/settings.local.json
