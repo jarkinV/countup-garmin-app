@@ -16,6 +16,8 @@ scripts/stop.sh          # stop the simulator
 scripts/test.sh [name]   # unit tests in the simulator
 scripts/release.sh       # bin/countup-garmin-app-release.prg
 scripts/run-release.sh   # release build in the sim (long-lived)
+scripts/run-screenshots.sh        # demo build (screenshots.jungle) in the sim (long-lived)
+python3 -I scripts/capture-readme.py  # regenerate docs/*.png, docs/browse.gif for the README
 ```
 
 They wrap the `garmin-dev` plugin (`.claude/settings.json` enables it) and force JDK 17. Do not call `monkeyc`/`monkeydo` directly. For Connect IQ API questions use the `garmin-dev` skill and its cached docs.
@@ -33,6 +35,7 @@ They wrap the `garmin-dev` plugin (`.claude/settings.json` enables it) and force
 | `source/Format.mc` | Display text: day counts, `3y 4m 17d`, `12 Jun 2023`, milestone labels (English, in code so the glance can use it) |
 | `source/DateMath.mc` | Pure calendar math on `[y, m, d]` arrays: `daysBetween`, `ymdBetween`, milestones; `today()` is the only clock access |
 | `source/EventStore.mc` | `CountupEvent` + `EventStore`: up to 10 events sorted newest first, glance event choice, `Application.Storage` keys `events` / `glanceId` / `nextId` |
+| `source/DemoData.mc` | Fixed sample events, reset on every start; real only in the screenshot build (`screenshots.jungle` excludes `nodemo`, `monkey.jungle` excludes `demo`) |
 | `test/*Test.mc` | Unit tests; `EventStore(false)` keeps them off real storage |
 | `resources/` | strings, launcher icon (40x40, copied from spd as a placeholder) |
 
@@ -51,7 +54,15 @@ Planned files are listed in `PLAN.md` → "Структура".
 ## Rules
 
 - Never commit, print or regenerate `developer_key` / `developer_key.pem` (same key as spd).
-- After any change: `scripts/build.sh` with no warnings beyond the `getInitialView` ones above, `scripts/test.sh` all passing, then check in the simulator with the user. Claude cannot screenshot the simulator here: ask the user what is on screen.
+- After any change: `scripts/build.sh` with no warnings beyond the `getInitialView` ones above, `scripts/test.sh` all passing, then check in the simulator with the user.
+
+## Seeing and driving the simulator
+
+The embedded Claude Code process (`~/Library/Application Support/Claude/claude-code/<version>/.../claude.app`) has Screen Recording and Accessibility, so Claude can:
+- capture only the simulator window: find its id with `CGWindowListCopyWindowInfo` via `osascript -l JavaScript` (window name starts with `CIQ Simulator`), then `screencapture -x -o -l <id>`. Never capture the whole screen: it shows the user's other work.
+- press buttons: focus `process "simulator"` with System Events, then `key code` 125 Down = DOWN, 126 Up = UP, 36 Return = START, 53 Escape = BACK. Mouse clicks on the bezel do nothing. The simulator sometimes swallows a key, so compare frames and retry.
+- switch Settings > Glance Launch Mode, then relaunch the app to see the glance.
+The permission is tied to the Claude Code version path; after an update it may need granting again. `scripts/capture-readme.py` has working code for all of this.
 - After `scripts/test.sh` the simulator will not start the normal app until restarted: `scripts/stop.sh`, then `scripts/run.sh`.
 - Keep testable logic (`DateMath`, `EventStore`) out of views and delegates, cover it in `test/`.
 - Keep `PLAN.md` in sync when a decision changes.

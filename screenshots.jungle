@@ -1,0 +1,4 @@
+# README screenshot build: same app, with DemoData's fixed sample events
+project.manifest = manifest.xml
+base.sourcePath = source
+base.excludeAnnotations = nodemo

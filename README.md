@@ -8,6 +8,16 @@ A Garmin Connect IQ app that counts days **since** a date, the mirror of the bui
 - Milestones (every 100 days and anniversaries) shown in gold on that day
 - Add, edit and delete events on the watch; no phone settings, no permissions
 
+<p align="center">
+  <img src="docs/browse.gif" width="300" alt="Switching between events; milestones in gold">
+</p>
+
+| Glance | Event | Menu | Edit |
+|:---:|:---:|:---:|:---:|
+| <img src="docs/glance.png" width="180" alt="Glance"> | <img src="docs/event-sober.png" width="180" alt="Event screen"> | <img src="docs/menu.png" width="180" alt="Menu"> | <img src="docs/edit.png" width="180" alt="Edit"> |
+
+Screenshots from the Connect IQ simulator with sample events.
+
 Design and decisions (in Ukrainian): [PLAN.md](PLAN.md).
 
 ## Build
@@ -22,6 +32,8 @@ scripts/run.sh           # start the simulator, build, run
 scripts/test.sh          # unit tests in the simulator
 scripts/release.sh       # bin/countup-garmin-app-release.prg
 ```
+
+The README images come from a separate demo build (`screenshots.jungle`, fixed sample events) driven in the simulator by `python3 -I scripts/capture-readme.py` (macOS, needs Pillow plus Screen Recording and Accessibility permissions).
 
 ## Install
 

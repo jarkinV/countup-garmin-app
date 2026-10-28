@@ -1,2 +1,4 @@
 project.manifest = manifest.xml
 base.sourcePath = source;test
+# DemoData's sample events exist only in the screenshot build (screenshots.jungle)
+base.excludeAnnotations = demo

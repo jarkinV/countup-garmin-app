@@ -72,6 +72,7 @@ source/
   CountupApp.mc           AppBase: getInitialView, getGlanceView
   EventStore.mc           Storage: load/save, add/edit/delete, сортування, glanceId
   DateMath.mc             чиста логіка: daysBetween, ymdBetween, milestone
+  DemoData.mc             демо-події для скріншотів README (тільки в screenshots.jungle)
   Format.mc               тексти: "1234 days", "3y 4m 17d", "12 Jun 2023", "3 years!"
   CountupGlance.mc        GlanceView
   EventView.mc            екран однієї події + порожній стан

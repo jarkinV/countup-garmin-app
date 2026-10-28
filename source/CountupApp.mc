@@ -8,6 +8,11 @@ class CountupApp extends Application.AppBase {
         AppBase.initialize();
     }
 
+    // Runs in glance mode too, before either view reads storage
+    function onStart(state as Dictionary?) as Void {
+        DemoData.reset();
+    }
+
     function getInitialView() as [WatchUi.Views] or [WatchUi.Views, WatchUi.InputDelegates] {
         var store = new EventStore(true);
         var view = new EventView(store);
