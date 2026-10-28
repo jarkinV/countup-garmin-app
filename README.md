@@ -37,7 +37,7 @@ The README images come from a separate demo build (`screenshots.jungle`, fixed s
 
 ## Install
 
-Copy `bin/countup-garmin-app-release.prg` to `GARMIN/APPS` on the watch (on macOS via an MTP client such as OpenMTP), then add **Countup** to the glance list.
+Download `countup.prg` from the [latest release](https://github.com/jarkinV/countup-garmin-app/releases/latest) (or build `bin/countup-garmin-app-release.prg` yourself) and copy it to `GARMIN/APPS` on the watch (on macOS via an MTP client such as OpenMTP), then add **Countup** to the glance list.
 
 ## License
 

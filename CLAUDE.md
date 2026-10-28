@@ -20,6 +20,8 @@ scripts/run-screenshots.sh        # demo build (screenshots.jungle) in the sim (
 python3 -I scripts/capture-readme.py  # regenerate docs/*.png, docs/browse.gif for the README
 ```
 
+GitHub releases (`gh` is logged in as `jarkinV`): annotated tag `vX.Y.Z`, then `gh release create vX.Y.Z <release .prg copied as countup.prg> --notes-file ...`. The asset is always named `countup.prg`; notes list features, the fēnix 9 Pro Solar 47mm-only limit and sideload steps.
+
 They wrap the `garmin-dev` plugin (`.claude/settings.json` enables it) and force JDK 17. Do not call `monkeyc`/`monkeydo` directly. For Connect IQ API questions use the `garmin-dev` skill and its cached docs.
 
 ## Layout
