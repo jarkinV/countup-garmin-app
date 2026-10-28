@@ -29,7 +29,8 @@ class RangeFactory extends WatchUi.PickerFactory {
         var names = _names;
         return new WatchUi.Text({
             :text => names != null ? names[value - 1] : value.toString(),
-            :color => Graphics.COLOR_BLACK,
+            :color => Graphics.COLOR_WHITE,
+            :backgroundColor => Graphics.COLOR_BLACK,
             :font => Graphics.FONT_MEDIUM,
             :locX => WatchUi.LAYOUT_HALIGN_CENTER,
             :locY => WatchUi.LAYOUT_VALIGN_CENTER
@@ -37,8 +38,9 @@ class RangeFactory extends WatchUi.PickerFactory {
     }
 }
 
-// Screen 8: day / month / year columns, years 1900..this year. The system draws the
-// picker on a white background on this watch, so the text is dark. A day past the month's
+// Screen 8: day / month / year columns, years 1900..this year. The watch draws the picker
+// on black but the simulator on white, so values are white on their own black box and show
+// on both. A day past the month's
 // end or a date after today is clamped on accept (DateMath.clampDate)
 class DatePicker extends WatchUi.Picker {
 

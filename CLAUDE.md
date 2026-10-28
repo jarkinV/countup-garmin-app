@@ -64,6 +64,8 @@ The embedded Claude Code process (`~/Library/Application Support/Claude/claude-c
 - capture only the simulator window: find its id with `CGWindowListCopyWindowInfo` via `osascript -l JavaScript` (window name starts with `CIQ Simulator`), then `screencapture -x -o -l <id>`. Never capture the whole screen: it shows the user's other work.
 - press buttons: focus `process "simulator"` with System Events, then `key code` 125 Down = DOWN, 126 Up = UP, 36 Return = START, 53 Escape = BACK. Mouse clicks on the bezel do nothing. The simulator sometimes swallows a key, so compare frames and retry.
 - switch Settings > Glance Launch Mode, then relaunch the app to see the glance.
+The simulator does not render system screens like the watch, even on SDK 9.3.0: `Picker` is drawn on white (black on the watch) and `TextPicker` is a vertical letter list (a circular keyboard with phone input on the watch). Make custom drawing readable on both, and trust the watch.
+
 The permission is tied to the Claude Code version path; after an update it may need granting again. `scripts/capture-readme.py` has working code for all of this.
 - After `scripts/test.sh` the simulator will not start the normal app until restarted: `scripts/stop.sh`, then `scripts/run.sh`.
 - Keep testable logic (`DateMath`, `EventStore`) out of views and delegates, cover it in `test/`.
